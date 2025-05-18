@@ -1,14 +1,10 @@
-@import "fonts.css";
-@import "base.css";
-@import "header.css";
-@import "main.css";
-@import "footer.css";
+@import "normalize.css";
 
 :root {
     --primary-color: #fff;
     --secondary-color: #e0e0e0;
-    --accent-color: #9b6b9e;
-    --dark-accent: #4a314b;
+    --accent-color: #b44dcd;
+    --dark-accent: #8a2ba0;
     --background-dark: #1a1a1a;
     --background-card: #1d1d1d;
     --card-gradient: linear-gradient(145deg, #1d1d1d, #252525);
@@ -18,7 +14,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
     line-height: 1.6;
     color: var(--primary-color);
     background-color: var(--background-dark);
@@ -27,7 +23,7 @@ body {
 }
 
 h1, h2, h3, .nav__link {
-    font-family: 'Cinzel', serif;
+    font-family: Georgia, serif;
 }
 
 .container {
@@ -48,7 +44,7 @@ h1, h2, h3, .nav__link {
     height: 120px;
     border-radius: 50%;
     border: 3px solid var(--accent-color);
-    box-shadow: 0 0 15px var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color);
     transition: var(--transition);
 }
 
@@ -76,7 +72,9 @@ h1, h2, h3, .nav__link {
 }
 
 .header__title::before,
-.header__title::after {
+.header__title::after,
+.services__title::before,
+.services__title::after {
     content: '✧';
     color: var(--accent-color);
     margin: 0 1rem;
@@ -102,7 +100,7 @@ h1, h2, h3, .nav__link {
 .button:hover {
     background-color: var(--accent-color);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(155, 107, 158, 0.4);
+    box-shadow: 0 5px 15px rgba(180, 77, 205, 0.5);
 }
 
 .nav {
@@ -181,23 +179,24 @@ h1, h2, h3, .nav__link {
     margin: 0;
 }
 
-.services__title::before,
-.services__title::after {
-    content: '✧';
-    color: var(--accent-color);
-    margin: 0 1rem;
-    text-shadow: 0 0 10px var(--accent-color);
-}
-
 .services__link {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
     text-decoration: none;
-    color: var(--accent-color);
+    color: var(--primary-color);
+    background-color: var(--dark-accent);
+    border: 2px solid var(--accent-color);
+    border-radius: 25px;
     transition: var(--transition);
+    font-weight: 500;
 }
 
 .services__link:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(180, 77, 205, 0.5);
     color: var(--primary-color);
-    text-shadow: 0 0 10px var(--accent-color);
+    text-shadow: none;
 }
 
 .services__list {
@@ -211,7 +210,7 @@ h1, h2, h3, .nav__link {
 .service-card {
     background-color: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(5px);
-    border: 1px solid var(--accent-color);
+    border: 2px solid var(--accent-color);
     border-radius: 15px;
     padding: 1.5rem;
     transition: var(--transition);
@@ -239,7 +238,7 @@ h1, h2, h3, .nav__link {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 20px rgba(180, 77, 205, 0.3);
     background-color: rgba(26, 26, 26, 0.98);
 }
 
@@ -283,7 +282,7 @@ h1, h2, h3, .nav__link {
 
 .service-card__link:hover {
     color: var(--primary-color);
-    text-shadow: 0 0 10px var(--accent-color);
+    text-shadow: 0 0 15px var(--accent-color);
 }
 
 .service-card__price {
@@ -329,4 +328,5 @@ h1, h2, h3, .nav__link {
 
 .footer__link:hover {
     color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
 }
