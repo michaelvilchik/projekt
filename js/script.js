@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img class="service-card__image" src="${service.image}" alt="${service.imageAlt}" width="300" height="200">
             </div>
             <h3 class="service-card__title">${service.title}</h3>
-            <p class="service-card__description">${service.description}</p>
             <p class="service-card__schedule">Расписание: ${service.schedule}</p>
             ${service.days ? `<p class="service-card__days">Дни: ${service.days}</p>` : ''}
             ${service.note ? `<p class="service-card__note">${service.note}</p>` : ''}
@@ -208,12 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
         booking: document.getElementById('bookingForm')
     };
 
-    const serviceDescriptions = {
-        'Расклад на Таро': 'Глубокий анализ вашей ситуации с помощью карт Таро. Расклады на отношения, карьеру, финансы и другие сферы жизни. Длительность сеанса - 1 час.',
-        'Подробный разбор натальной карты': 'Детальный анализ вашей натальной карты, включающий описание характера, талантов, жизненных задач и потенциальных возможностей. Длительность консультации - 2 часа.',
-        'Отлив заговорённых свечей': 'Изготовление индивидуальных свечей с учетом ваших целей и потребностей. Каждая свеча создается в определенное время с использованием специальных заговоров и природных материалов.'
-    };
-
     const openModal = (modal) => {
         if (modal) {
             modal.classList.add('active');
@@ -233,9 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleServiceCardClick = (serviceCard) => {
         console.log('Клик по карточке услуги:', serviceCard.querySelector('.service-card__title').textContent);
         
+        const title = serviceCard.querySelector('.service-card__title').textContent;
+        // Найдем услугу в массиве всех услуг
+        const service = allServices.find(s => s.title === title);
+        
         const serviceData = {
-            title: serviceCard.querySelector('.service-card__title').textContent,
+            title: title,
             image: serviceCard.querySelector('.service-card__image').src,
+            description: service ? service.description : 'Описание временно недоступно',
             schedule: serviceCard.querySelector('.service-card__schedule').textContent,
             price: serviceCard.querySelector('.service-card__price').textContent
         };
@@ -247,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="service-details">
                 <img class="service-details__image" src="${serviceData.image}" alt="${serviceData.title}">
                 <h3 class="service-details__title">${serviceData.title}</h3>
-                <p class="service-details__description">${serviceDescriptions[serviceData.title] || 'Описание временно недоступно'}</p>
+                <p class="service-details__description">${serviceData.description}</p>
                 <div class="service-details__info">
                     <p class="service-details__schedule">${serviceData.schedule}</p>
                     <p class="service-details__price">${serviceData.price}</p>
