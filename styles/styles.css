@@ -1,0 +1,30 @@
+/* Основные стили */
+:root {
+    --primary-color: #333;
+    --secondary-color: #666;
+    --accent-color: #007bff;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--primary-color);
+}
+
+/* Стили для шапки */
+.header {
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+/* Стили для основного контента */
+.main {
+    padding: 2rem;
+}
+
+/* Стили для подвала */
+.footer__total {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    margin-top: 2rem;
+} 
