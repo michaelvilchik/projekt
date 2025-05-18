@@ -1040,3 +1040,141 @@ textarea.form__input {
     color: #ff6b6b;
     border: 1px solid #ff6b6b;
 }
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; /* Увеличенный отступ от карточек */
+    gap: 1rem;
+    padding-top: 30px; /* Дополнительный отступ сверху */
+    border-top: 1px solid rgba(180, 77, 205, 0.2); /* Декоративная линия для разделения */
+}
+
+.pagination__pages {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pagination__btn,
+.pagination__page {
+    background-color: var(--background-card);
+    border: 2px solid var(--accent-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: Georgia, serif;
+}
+
+.pagination__btn {
+    font-size: 1.2rem;
+    border-radius: 25px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination__btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--secondary-color);
+}
+
+.pagination__page {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.pagination__page.active {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border-color: var(--accent-color);
+}
+
+.pagination__btn:hover:not(:disabled),
+.pagination__page:hover:not(.active) {
+    background-color: var(--dark-accent);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(180, 77, 205, 0.3);
+}
+
+.pagination__btn:active:not(:disabled),
+.pagination__page:active:not(.active) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(180, 77, 205, 0.2);
+}
+
+/* Сетка услуг для главной страницы */
+.services__list--home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Сетка услуг для каталога */
+.services__list--catalog {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px 30px; /* Увеличиваем отступ между рядами до 80px, между колонками оставляем 30px */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 1200px) {
+    .services__list--home,
+    .services__list--catalog {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services__list--catalog {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 70px 30px; /* Отступ между рядами 70px для планшетов */
+    }
+
+    .pagination {
+        margin-top: 40px;
+        padding-top: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services__list--home {
+        grid-template-columns: 1fr;
+    }
+    
+    .services__list--catalog {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px 20px; /* Отступ между рядами 60px для маленьких планшетов */
+    }
+
+    .pagination {
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .services__list--catalog {
+        grid-template-columns: 1fr;
+        gap: 50px; /* Отступ между карточками 50px для мобильных */
+    }
+
+    .pagination {
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+}

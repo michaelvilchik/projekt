@@ -22,6 +22,15 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Конфигурация пагинации
+    const ITEMS_PER_PAGE = 6;
+    const ITEMS_ON_HOME = 3;
+    let currentPage = 1;
+    let totalPages = 1;
+    let allServices = [];
+    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    const isCatalogPage = window.location.pathname.includes('catalog.html');
+
     // Загрузка данных услуг из JSON
     const loadServices = async () => {
         try {
@@ -74,6 +83,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return error;
     };
 
+    // Обновление пагинации
+    const updatePagination = () => {
+        if (!isCatalogPage) return;
+
+        const pagesContainer = document.getElementById('paginationPages');
+        const prevBtn = document.getElementById('prevPage');
+        const nextBtn = document.getElementById('nextPage');
+
+        if (!pagesContainer) return;
+
+        // Очищаем контейнер страниц
+        pagesContainer.innerHTML = '';
+
+        // Создаем кнопки для каждой страницы
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `pagination__page${i === currentPage ? ' active' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderServices();
+            });
+            pagesContainer.appendChild(pageBtn);
+        }
+
+        // Обновляем состояние кнопок prev/next
+        if (prevBtn) prevBtn.disabled = currentPage === 1;
+        if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+    };
+
     // Рендеринг карточек услуг
     const renderServices = async () => {
         const servicesList = document.querySelector('.services__list');
@@ -84,24 +123,48 @@ document.addEventListener('DOMContentLoaded', () => {
         servicesList.appendChild(createLoadingIndicator());
 
         try {
-            const services = await loadServices();
-            
+            // Загружаем все услуги, если еще не загружены
+            if (allServices.length === 0) {
+                allServices = await loadServices();
+                totalPages = Math.ceil(allServices.length / ITEMS_PER_PAGE);
+            }
+
             // Очищаем список перед добавлением карточек
             servicesList.innerHTML = '';
 
-            if (services.length === 0) {
+            if (allServices.length === 0) {
                 throw new Error('Нет доступных услуг');
             }
 
-            services.forEach(service => {
+            let servicesToShow = [];
+            
+            if (isHomePage) {
+                // На главной показываем только первые 3 услуги
+                servicesToShow = allServices.slice(0, ITEMS_ON_HOME);
+                servicesList.classList.add('services__list--home');
+            } else if (isCatalogPage) {
+                // В каталоге показываем 6 услуг с пагинацией
+                const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+                const endIndex = startIndex + ITEMS_PER_PAGE;
+                servicesToShow = allServices.slice(startIndex, endIndex);
+                servicesList.classList.add('services__list--catalog');
+            }
+
+            // Создаем карточки
+            servicesToShow.forEach(service => {
                 const card = createServiceCard(service);
                 servicesList.appendChild(card);
             });
 
+            // Обновляем пагинацию только для страницы каталога
+            if (isCatalogPage) {
+                updatePagination();
+            }
+            
             // Переинициализация обработчиков событий для карточек
             initServiceCards();
             
-            console.log('Услуги успешно загружены:', services.length);
+            console.log('Услуги успешно загружены:', servicesToShow.length);
         } catch (error) {
             console.error('Ошибка при рендеринге услуг:', error);
             servicesList.innerHTML = '';
@@ -299,6 +362,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Вызываем рендеринг карточек при загрузке страницы
+    // Обработчики событий для кнопок пагинации только на странице каталога
+    if (isCatalogPage) {
+        document.getElementById('prevPage')?.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderServices();
+            }
+        });
+
+        document.getElementById('nextPage')?.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderServices();
+            }
+        });
+    }
+
+    // Вызываем рендеринг при загрузке страницы
     renderServices();
 }); 
