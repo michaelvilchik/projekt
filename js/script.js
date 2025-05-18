@@ -377,6 +377,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Обработка формы обратной связи
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Отправка формы обратной связи:', formData);
+            
+            // Здесь будет отправка данных на сервер
+            
+            // Очищаем форму и показываем сообщение об успехе
+            contactForm.reset();
+            alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
+        });
+    }
+
     // Вызываем рендеринг при загрузке страницы
     renderServices();
 }); 

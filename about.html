@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - Эзотерический центр</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="audios/Neizvestnyjj_-_Dark_Sun_Gwyndolin_Dark_Souls_Prepare_to_Die.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-control">
+        <button class="music-toggle" aria-label="Управление музыкой">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+    <button class="scroll-top" aria-label="Прокрутить вверх">↑</button>
+
+    <header class="header">
+        <div class="container">
+            <div class="header__top">
+                <img class="header__logo" src="images/logo.jpg" alt="Логотип эзотерического салона" width="120" height="120">
+                <h1 class="header__title">✧ Эзотерические услуги ✧</h1>
+                <div class="header__auth">
+                    <button class="button" id="loginButton">Вход</button>
+                    <button class="button" id="registerButton">Регистрация</button>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a class="nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="catalog.html">Каталог</a> 
+                    </li>
+                    <li class="nav__item"> 
+                        <a class="nav__link nav__link--active" href="about.html">О нас</a> 
+                    </li>
+                    <li class="nav__item"> 
+                        <a class="nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="about">
+                <div class="services__header">
+                    <h2 class="services__title">✧ Ковен Марий Эл ✧</h2>
+                </div>
+                <div class="about__content">
+                    <div class="service-card about__card">
+                        <div class="service-card__image-container">
+                            <img src="images/coven.jpg" alt="Ковен ведьм Марий Эл" class="service-card__image">
+                        </div>
+                        <h3 class="service-card__title">Древние традиции марийской магии</h3>
+                        <p class="service-card__description">
+                            Наш ковен, основанный на древних традициях марийского народа, является хранителем сакральных знаний, передающихся из поколения в поколение. Расположенный в сердце священных марийских лесов, наш центр объединяет опытных практиков, владеющих уникальными техниками целительства, ясновидения и природной магии.
+                        </p>
+                        <p class="service-card__description">
+                            Мы бережно храним и развиваем традиции марийских карт-ведьм, совмещая древние практики с современными методами духовного развития. Наши мастера специализируются на работе с природными стихиями, травами и кристаллами, а также владеют искусством марийского шаманизма.
+                        </p>
+                    </div>
+
+                    <div class="services__list services__list--about">
+                        <div class="service-card">
+                            <div class="service-card__image-container">
+                                <img src="images/tradition.jpg" alt="Традиции" class="service-card__image">
+                            </div>
+                            <h3 class="service-card__title">Древние традиции</h3>
+                            <p class="service-card__description">Мы являемся хранителями древних марийских обрядов и ритуалов, передающихся через поколения. Наши практики основаны на глубокой связи с природой и почитании древних богов марийского пантеона.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card__image-container">
+                                <img src="images/healing.jpg" alt="Целительство" class="service-card__image">
+                            </div>
+                            <h3 class="service-card__title">Природное целительство</h3>
+                            <p class="service-card__description">Используем силу марийских трав, кристаллов и природных стихий для исцеления души и тела. Наши целители владеют секретами традиционной марийской медицины и энергетических практик.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card__image-container">
+                                <img src="images/divination.jpg" alt="Гадание" class="service-card__image">
+                            </div>
+                            <h3 class="service-card__title">Искусство предсказания</h3>
+                            <p class="service-card__description">Практикуем древнее искусство марийского гадания на картах, рунах и природных знаках. Наши ясновидящие помогут заглянуть за завесу будущего и найти ответы на важные вопросы.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card about__values">
+                        <h3 class="service-card__title">Наши принципы</h3>
+                        <ul class="services__available">
+                            <li>Уважение к древним традициям марийского народа</li>
+                            <li>Гармония с природными силами и стихиями</li>
+                            <li>Этичность и ответственность в магической практике</li>
+                            <li>Индивидуальный подход к каждому обращающемуся</li>
+                            <li>Сохранение и передача древних знаний</li>
+                            <li>Постоянное духовное развитие и совершенствование</li>
+                            <li>Помощь в поиске жизненного пути</li>
+                            <li>Защита и поддержка членов ковена</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card about__places">
+                        <h3 class="service-card__title">Священные места силы</h3>
+                        <p class="service-card__description">
+                            Наш ковен располагается вблизи древних священных рощ Марий Эл, где проводятся важнейшие обряды и ритуалы. Эти места, намоленные многими поколениями, обладают особой энергетикой и силой. Здесь, среди вековых деревьев, мы проводим сезонные праздники, обряды исцеления и инициации новых членов ковена.
+                        </p>
+                        <div class="services__available">
+                            <h4>Основные направления практик</h4>
+                            <li>Марийская природная магия</li>
+                            <li>Традиционное целительство</li>
+                            <li>Работа с родовой памятью</li>
+                            <li>Обряды очищения и защиты</li>
+                            <li>Предсказания и ясновидение</li>
+                            <li>Обучение древним практикам</li>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__copyright">© 2025 Эзотерические услуги | Сайт создан Вильчиком Михаилом Анатольевичем АБ-21</p>
+            <ul class="footer__nav">
+                <li class="footer__item"><a class="footer__link" href="#">Контактная информация</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Связь с нами</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Модальное окно входа -->
+    <div class="modal" id="loginModal">
+        <div class="modal__content">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <h2 class="modal__title">Вход</h2>
+            <form class="modal__form" id="loginForm">
+                <div class="modal__form-group">
+                    <label for="loginEmail" class="modal__label">Email</label>
+                    <input type="email" id="loginEmail" class="modal__input" required>
+                </div>
+                <div class="modal__form-group">
+                    <label for="loginPassword" class="modal__label">Пароль</label>
+                    <input type="password" id="loginPassword" class="modal__input" required>
+                </div>
+                <button type="submit" class="button button--primary modal__submit">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal" id="registerModal">
+        <div class="modal__content">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <h2 class="modal__title">Регистрация</h2>
+            <form class="modal__form" id="registerForm">
+                <div class="modal__form-group">
+                    <label for="registerName" class="modal__label">Имя</label>
+                    <input type="text" id="registerName" class="modal__input" required>
+                </div>
+                <div class="modal__form-group">
+                    <label for="registerEmail" class="modal__label">Email</label>
+                    <input type="email" id="registerEmail" class="modal__input" required>
+                </div>
+                <div class="modal__form-group">
+                    <label for="registerPassword" class="modal__label">Пароль</label>
+                    <input type="password" id="registerPassword" class="modal__input" required>
+                </div>
+                <button type="submit" class="button button--primary modal__submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 

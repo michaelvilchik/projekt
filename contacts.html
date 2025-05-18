@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Эзотерический центр</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="css/contacts.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="audios/Neizvestnyjj_-_Dark_Sun_Gwyndolin_Dark_Souls_Prepare_to_Die.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-control">
+        <button class="music-toggle" aria-label="Управление музыкой">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+    <button class="scroll-top" aria-label="Прокрутить вверх">↑</button>
+
+    <header class="header">
+        <div class="container">
+            <div class="header__top">
+                <img class="header__logo" src="images/logo.jpg" alt="Логотип эзотерического салона" width="120" height="120">
+                <h1 class="header__title">✧ Эзотерические услуги ✧</h1>
+                <div class="header__auth">
+                    <button class="button" id="loginButton">Вход</button>
+                    <button class="button" id="registerButton">Регистрация</button>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a class="nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="catalog.html">Каталог</a> 
+                    </li>
+                    <li class="nav__item"> 
+                        <a class="nav__link" href="about.html">О нас</a> 
+                    </li>
+                    <li class="nav__item"> 
+                        <a class="nav__link nav__link--active" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="contacts">
+                <div class="services__header">
+                    <h2 class="services__title">✧ Контакты ✧</h2>
+                </div>
+                <div class="services__list services__list--contacts">
+                    <div class="service-card contact-card">
+                        <div class="service-card__image-container">
+                            <img src="images/location.jpg" alt="Наш адрес" class="service-card__image">
+                        </div>
+                        <h3 class="service-card__title">Адрес</h3>
+                        <div class="service-card__description">
+                            <p>г. Москва, ул. Мистическая, д. 7</p>
+                            <p>ст. м. Таинственная</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card contact-card">
+                        <div class="service-card__image-container">
+                            <img src="images/time.jpg" alt="Время работы" class="service-card__image">
+                        </div>
+                        <h3 class="service-card__title">Время работы</h3>
+                        <div class="service-card__description">
+                            <p>Пн-Пт: 10:00 - 20:00</p>
+                            <p>Сб-Вс: 11:00 - 18:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card contact-card">
+                        <div class="service-card__image-container">
+                            <img src="images/contact.jpg" alt="Контакты" class="service-card__image">
+                        </div>
+                        <h3 class="service-card__title">Контакты</h3>
+                        <div class="service-card__description">
+                            <p><a href="tel:+74951234567" class="contact-link">+7 (495) 123-45-67</a></p>
+                            <p><a href="mailto:info@esocenter.ru" class="contact-link">info@esocenter.ru</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card contact-form-card">
+                    <h3 class="service-card__title">Напишите нам</h3>
+                    <form class="booking-form" id="contactForm">
+                        <div class="form__group">
+                            <label for="name" class="form__label">Ваше имя</label>
+                            <input type="text" id="name" name="name" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="email" class="form__label">Email</label>
+                            <input type="email" id="email" name="email" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="phone" class="form__label">Телефон</label>
+                            <input type="tel" id="phone" name="phone" class="form__input" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="message" class="form__label">Сообщение</label>
+                            <textarea id="message" name="message" class="form__input" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="button">Отправить</button>
+                    </form>
+                </div>
+
+                <div class="service-card map-card">
+                    <h3 class="service-card__title">Как нас найти</h3>
+                    <div class="service-card__description">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.5887638669243!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIwLjkiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1635000000000!5m2!1sru!2sru" 
+                                width="100%" 
+                                height="450" 
+                                style="border:0; border-radius: 8px;" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__copyright">© 2025 Эзотерические услуги | Сайт создан Вильчиком Михаилом Анатольевичем АБ-21</p>
+            <ul class="footer__nav">
+                <li class="footer__item"><a class="footer__link" href="#">Контактная информация</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Связь с нами</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Модальное окно входа -->
+    <div class="modal" id="loginModal">
+        <div class="modal__content">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <h2 class="modal__title">Вход</h2>
+            <form class="modal__form" id="loginForm">
+                <div class="modal__form-group">
+                    <label for="loginEmail" class="modal__label">Email</label>
+                    <input type="email" id="loginEmail" class="modal__input" required>
+                </div>
+                <div class="modal__form-group">
+                    <label for="loginPassword" class="modal__label">Пароль</label>
+                    <input type="password" id="loginPassword" class="modal__input" required>
+                </div>
+                <button type="submit" class="button button--primary modal__submit">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal" id="registerModal">
+        <div class="modal__content">
+            <button class="modal__close" aria-label="Закрыть">×</button>
+            <h2 class="modal__title">Регистрация</h2>
+            <form class="modal__form" id="registerForm">
+                <div class="modal__form-group">
+                    <label for="registerName" class="modal__label">Имя</label>
+                    <input type="text" id="registerName" class="modal__input" required>
+                </div>
+                <div class="modal__form-group">
+                    <label for="registerEmail" class="modal__label">Email</label>
+                    <input type="email" id="registerEmail" class="modal__input" required>
+                </div>
+                <div class="modal__form-group">
+                    <label for="registerPassword" class="modal__label">Пароль</label>
+                    <input type="password" id="registerPassword" class="modal__input" required>
+                </div>
+                <button type="submit" class="button button--primary modal__submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html> 
