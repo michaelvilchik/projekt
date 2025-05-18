@@ -22,7 +22,111 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Основные элементы интерфейса
+    // Загрузка данных услуг из JSON
+    const loadServices = async () => {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error('Ошибка загрузки данных');
+            }
+            const data = await response.json();
+            return data.services;
+        } catch (error) {
+            console.error('Ошибка при загрузке данных:', error);
+            return [];
+        }
+    };
+
+    // Создание HTML карточки услуги
+    const createServiceCard = (service) => {
+        const card = document.createElement('li');
+        card.className = 'service-card';
+        card.tabIndex = '0';
+        
+        card.innerHTML = `
+            <div class="service-card__image-container">
+                <img class="service-card__image" src="${service.image}" alt="${service.imageAlt}" width="300" height="200">
+            </div>
+            <h3 class="service-card__title">${service.title}</h3>
+            <p class="service-card__description">${service.description}</p>
+            <p class="service-card__schedule">Расписание: ${service.schedule}</p>
+            ${service.days ? `<p class="service-card__days">Дни: ${service.days}</p>` : ''}
+            ${service.note ? `<p class="service-card__note">${service.note}</p>` : ''}
+            <span class="service-card__price">${service.price}</span>
+        `;
+
+        return card;
+    };
+
+    // Создание индикатора загрузки
+    const createLoadingIndicator = () => {
+        const loading = document.createElement('div');
+        loading.className = 'loading-indicator';
+        loading.innerHTML = 'Загрузка услуг...';
+        return loading;
+    };
+
+    // Создание сообщения об ошибке
+    const createErrorMessage = () => {
+        const error = document.createElement('div');
+        error.className = 'error-message';
+        error.innerHTML = 'Не удалось загрузить услуги. Пожалуйста, попробуйте позже.';
+        return error;
+    };
+
+    // Рендеринг карточек услуг
+    const renderServices = async () => {
+        const servicesList = document.querySelector('.services__list');
+        if (!servicesList) return;
+
+        // Показываем индикатор загрузки
+        servicesList.innerHTML = '';
+        servicesList.appendChild(createLoadingIndicator());
+
+        try {
+            const services = await loadServices();
+            
+            // Очищаем список перед добавлением карточек
+            servicesList.innerHTML = '';
+
+            if (services.length === 0) {
+                throw new Error('Нет доступных услуг');
+            }
+
+            services.forEach(service => {
+                const card = createServiceCard(service);
+                servicesList.appendChild(card);
+            });
+
+            // Переинициализация обработчиков событий для карточек
+            initServiceCards();
+            
+            console.log('Услуги успешно загружены:', services.length);
+        } catch (error) {
+            console.error('Ошибка при рендеринге услуг:', error);
+            servicesList.innerHTML = '';
+            servicesList.appendChild(createErrorMessage());
+        }
+    };
+
+    // Инициализация обработчиков событий для карточек
+    const initServiceCards = () => {
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('click', () => {
+                console.log('Событие click на карточке');
+                handleServiceCardClick(card);
+            });
+            
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    console.log('Событие keydown (Enter) на карточке');
+                    handleServiceCardClick(card);
+                }
+            });
+        });
+    };
+
     const modals = {
         service: document.getElementById('serviceModal'),
         login: document.getElementById('loginModal'),
@@ -41,39 +145,31 @@ document.addEventListener('DOMContentLoaded', () => {
         booking: document.getElementById('bookingForm')
     };
 
-    // Получаем все карточки услуг
-    const serviceCards = document.querySelectorAll('.service-card');
-
-    // Описания услуг для модального окна
     const serviceDescriptions = {
         'Расклад на Таро': 'Глубокий анализ вашей ситуации с помощью карт Таро. Расклады на отношения, карьеру, финансы и другие сферы жизни. Длительность сеанса - 1 час.',
         'Подробный разбор натальной карты': 'Детальный анализ вашей натальной карты, включающий описание характера, талантов, жизненных задач и потенциальных возможностей. Длительность консультации - 2 часа.',
         'Отлив заговорённых свечей': 'Изготовление индивидуальных свечей с учетом ваших целей и потребностей. Каждая свеча создается в определенное время с использованием специальных заговоров и природных материалов.'
     };
 
-    // Функция открытия модального окна
     const openModal = (modal) => {
         if (modal) {
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+            document.body.style.overflow = 'hidden'; 
             console.log('Модальное окно открыто:', modal.id);
         }
     };
 
-    // Функция закрытия модального окна
     const closeModal = (modal) => {
         if (modal) {
             modal.classList.remove('active');
-            document.body.style.overflow = ''; // Возвращаем прокрутку страницы
+            document.body.style.overflow = '';
             console.log('Модальное окно закрыто:', modal.id);
         }
     };
 
-    // Обработчик клика по карточке услуги
     const handleServiceCardClick = (serviceCard) => {
         console.log('Клик по карточке услуги:', serviceCard.querySelector('.service-card__title').textContent);
         
-        // Собираем данные из карточки
         const serviceData = {
             title: serviceCard.querySelector('.service-card__title').textContent,
             image: serviceCard.querySelector('.service-card__image').src,
@@ -83,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log('Данные услуги:', serviceData);
 
-        // Формируем содержимое модального окна
         const modalBody = modals.service.querySelector('.modal__body');
         modalBody.innerHTML = `
             <div class="service-details">
@@ -97,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // Устанавливаем минимальную дату для бронирования (завтра)
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         const bookingDateInput = document.getElementById('bookingDate');
@@ -108,24 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
         openModal(modals.service);
     };
 
-    // Добавляем слушатели событий для карточек
-    serviceCards.forEach(card => {
-        // Слушатель клика
-        card.addEventListener('click', () => {
-            console.log('Событие click на карточке');
-            handleServiceCardClick(card);
-        });
-        
-        // Слушатель нажатия клавиши Enter для доступности
-        card.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                console.log('Событие keydown (Enter) на карточке');
-                handleServiceCardClick(card);
-            }
-        });
-    });
-
-    // Обработка отправки формы бронирования
     if (forms.booking) {
         forms.booking.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -146,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Слушатели для кнопок закрытия модальных окон
     buttons.closeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             console.log('Клик по кнопке закрытия');
@@ -154,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Закрытие по клику вне модального окна
     window.addEventListener('click', (e) => {
         Object.values(modals).forEach(modal => {
             if (e.target === modal) {
@@ -164,7 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Обработчики для кнопок входа и регистрации
     buttons.login.addEventListener('click', () => {
         console.log('Открытие модального окна входа');
         openModal(modals.login);
@@ -175,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
         openModal(modals.register);
     });
 
-    // Обработка отправки формы входа
     forms.login.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = {
@@ -186,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal(modals.login);
     });
 
-    // Обработка отправки формы регистрации
     forms.register.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = {
@@ -198,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal(modals.register);
     });
 
-    // Закрытие по нажатию Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             console.log('Нажата клавиша Escape');
@@ -206,16 +276,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Формируем массив заголовков услуг и выводим их в консоль только на странице каталога
     if (window.location.pathname.includes('catalog.html')) {
         const serviceTitles = Array.from(document.querySelectorAll('.service-card__title')).map(title => title.textContent);
         console.log('Список доступных услуг:', serviceTitles);
     }
 
-    // Кнопка скролла вверх
     const scrollTopButton = document.querySelector('.scroll-top');
 
-    // Показываем/скрываем кнопку скролла при прокрутке
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
             scrollTopButton.classList.add('visible');
@@ -224,7 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Обработчик клика по кнопке скролла
     scrollTopButton.addEventListener('click', () => {
         console.log('Скролл вверх страницы');
         window.scrollTo({
@@ -232,4 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
+
+    // Вызываем рендеринг карточек при загрузке страницы
+    renderServices();
 }); 

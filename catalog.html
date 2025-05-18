@@ -11,7 +11,6 @@
         <script src="js/script.js" defer></script>
     </head>
     <body>
-        <!-- Общие элементы управления -->
         <audio id="background-music" loop>
             <source src="audios/Neizvestnyjj_-_Dark_Sun_Gwyndolin_Dark_Souls_Prepare_to_Die.mp3" type="audio/mpeg">
         </audio>
@@ -22,7 +21,6 @@
         </div>
         <button class="scroll-top" aria-label="Прокрутить вверх">↑</button>
 
-        <!-- Хедер -->
         <header class="header">
             <div class="container">
                 <div class="header__top">
@@ -98,42 +96,12 @@
                         <h2 class="services__title">✧ Каталог услуг ✧</h2>
                     </div>
                     <ul class="services__list">
-                        <li class="service-card" tabindex="0">
-                            <div class="service-card__image-container">
-                                <img class="service-card__image" src="images/tarot.jpg" alt="Карты Таро" width="300" height="200">
-                            </div>
-                            <h3 class="service-card__title">Расклад на Таро</h3>
-                            <p class="service-card__description">Глубокий анализ вашей ситуации с помощью карт Таро. Расклады на отношения, карьеру, финансы и другие сферы жизни.</p>
-                            <p class="service-card__schedule">Расписание: 12:00-18:00</p>
-                            <p class="service-card__days">Дни: вторник, четверг, суббота</p>
-                            <span class="service-card__price">От 1500 ₽</span>
-                        </li>
-                        <li class="service-card" tabindex="0">
-                            <div class="service-card__image-container">
-                                <img class="service-card__image" src="images/natal.jpg" alt="Натальная карта" width="300" height="200">
-                            </div>
-                            <h3 class="service-card__title">Подробный разбор натальной карты</h3>
-                            <p class="service-card__description">Детальный анализ вашей натальной карты, включающий описание характера, талантов, жизненных задач и потенциальных возможностей.</p>
-                            <p class="service-card__schedule">Расписание: 12:00-18:00</p>
-                            <p class="service-card__note">По записи</p>
-                            <span class="service-card__price">От 3000 ₽</span>
-                        </li>
-                        <li class="service-card" tabindex="0">
-                            <div class="service-card__image-container">
-                                <img class="service-card__image" src="images/candles.jpg" alt="Свечи" width="300" height="200">
-                            </div>
-                            <h3 class="service-card__title">Отлив заговорённых свечей</h3>
-                            <p class="service-card__description">Изготовление индивидуальных свечей с учетом ваших целей и потребностей. Каждая свеча создается в определенное время с использованием специальных заговоров и природных материалов.</p>
-                            <p class="service-card__schedule">Расписание: Индивидуальное обращение</p>
-                            <p class="service-card__days">Дни: суббота</p>
-                            <span class="service-card__price">От 1000 ₽</span>
-                        </li>
+                        <!-- Карточки услуг будут загружены динамически -->
                     </ul>
                 </section>
             </div>
         </main>
 
-        <!-- Футер -->
         <footer class="footer">
             <div class="container">
                 <p class="footer__copyright">© 2025 Эзотерические услуги | Сайт создан Вильчиком Михаилом Анатольевичем АБ-21</p>
@@ -144,5 +112,47 @@
                 </ul>
             </div>
         </footer>
+
+        <!-- Модальное окно входа -->
+        <div class="modal" id="loginModal">
+            <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть">×</button>
+                <h3 class="modal__title">Вход</h3>
+                <form class="form" id="loginForm">
+                    <div class="form__group">
+                        <label class="form__label" for="loginEmail">Email</label>
+                        <input class="form__input" type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="loginPassword">Пароль</label>
+                        <input class="form__input" type="password" id="loginPassword" required>
+                    </div>
+                    <button class="button form__submit" type="submit">Войти</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Модальное окно регистрации -->
+        <div class="modal" id="registerModal">
+            <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть">×</button>
+                <h3 class="modal__title">Регистрация</h3>
+                <form class="form" id="registerForm">
+                    <div class="form__group">
+                        <label class="form__label" for="registerName">Имя</label>
+                        <input class="form__input" type="text" id="registerName" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="registerEmail">Email</label>
+                        <input class="form__input" type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="registerPassword">Пароль</label>
+                        <input class="form__input" type="password" id="registerPassword" required>
+                    </div>
+                    <button class="button form__submit" type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html> 
