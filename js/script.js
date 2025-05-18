@@ -68,8 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img class="service-details__image" src="${serviceData.image}" alt="${serviceData.title}">
                 <h3 class="service-details__title">${serviceData.title}</h3>
                 <p class="service-details__description">${serviceDescriptions[serviceData.title] || 'Описание временно недоступно'}</p>
-                <p class="service-details__schedule">${serviceData.schedule}</p>
-                <p class="service-details__price">${serviceData.price}</p>
+                <div class="service-details__info">
+                    <p class="service-details__schedule">${serviceData.schedule}</p>
+                    <p class="service-details__price">${serviceData.price}</p>
+                </div>
             </div>
         `;
 
