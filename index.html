@@ -1,84 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/styles.css">
-</head>
-<body>
-    <header class="header">
-    <img class="header__logo" src="images/Logo.jpg" alt="Логотип" width="100" height="100">
-    <h1 class="header__title">Эзотерические услуги</h1>
-    <a class="header__button" hlef="login.html">Выход</a>
-    <a class="header__button" hlef="registration.html">Выход</a>
-    <nav class="header__menu">
-        <ul class="menu">
-            <li class="menu__iten menu__iten--active">
-                <a class="menu__link" href="index.html">Главное</a>
-            </li>
-            <li class="menu__iten">
-                <a class="menu__link" href="№">Каталог</a> 
-            </li>
-            <li class="menu__iten"> 
-                <a class="menu__link" href="№">О нас </a> 
-            </li>
-            <li class="menu__iten"> 
-                <a class="menu__iten" href="№">Контакты</a>
-            </li>
-        <ul>
-        </nav>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="styles/styles.css">
+        <script src="js/main.js" defer></script>
+    </head>
+    <body>
+        <header class="header">
+            <img class="header__logo" src="images/Logo.jpg" alt="Логотип" width="100" height="100">
+            <h1 class="header__title">Эзотерические услуги</h1>
+            <div class="header__auth">
+                <a class="button" href="login.html">Вход</a>
+                <a class="button" href="registration.html">Регистрация</a>
+            </div>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item nav__item--active">
+                        <a class="nav__link" href="index.html">Главное</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="catalog.html">Каталог</a> 
+                    </li>
+                    <li class="nav__item"> 
+                        <a class="nav__link" href="about.html">О нас</a> 
+                    </li>
+                    <li class="nav__item"> 
+                        <a class="nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
-    </header>
-
-<main class="main">
-    <section class="magic">
-        <div class="magic__wrap">
-            <h2 class="magic__title">Эзотерические услуги</h2>
-            <a class="magic__link" href="#" target="_black"> Все доступные услуги  </a>
-        </div>
-        <ul class="magic__list">
-            <li class="magic__item">
-                <img class="magic__image" src="images/1.jpg" alt="" width="100" height="100">
-                <h3 class="magic__subtitle">Расклад на Таро</h3>
-                <p class="magic__time">Расписание: 12:00-18:00</p>
-                <p class="magic__namber">Дни недели: вторник, четверг, суббота </p>
-                <a class="magic__info" href="#"> Узнать подробнее </a>
-                <span class="magic__pay">  От 1500 Р</span>
-
-
-            </li>
-            <li class="magic__item">
-                <img class="magic__image" src="images/2.jpg" alt="Флаг Крыма" width="100" height="100">
-                <h3 class="magic__subtitle">Подробный разбор натальной карты</h3>
-                <p class="magic__time">Расписание: 12:00-18:00</p>
-                <p class="magic__report">По записи</p>
-                <a class="magic__info" href="#"> Узнать подробнее </a>
-                <span class="magic__pay"> От 3000 Р</span>
-                
-
-            </li>
-            <li class="magic__item">
-                <img class="magic__image" src="images/3.jpg" alt="Флаг Краснодара" width="100" height="100">
-                <h3 class="magic__subtitle">Отлив заговорённых свечей</h3>
-                <p class="magic__time">Расписание: Индивидуальное обращение</p>
-                <p class="magic__namber">Дни недели: суббота</p>
-                <a class="magic__info" href="#"> Узнать подробнее </a>
-                <span class="magic__pay">  От 1000 Р</span>
-                
-
-            </li>
-        </ul>
-    </section>
-    </main>
-    <footer class="footer__total">
-        <p class="footer__name">Сайт создан Вильчиком Михаилом Анатольевичем АБ-21</p>
-         <ul class="footer__list">
-         <li class="footer__item"> <a href="#">Контакная информация</a></li>
-         <li class="footer__item"> <a href="#">Связь с нами</a></li>
-         <li class="footer__item"> <a href="#">Политика конфедециальности</a></li>
-         </ul>
-    </footer>
-</body>
+        <main class="main">
+            <section class="services">
+                <div class="services__header">
+                    <h2 class="services__title">Эзотерические услуги</h2>
+                    <a class="services__link" href="#" target="_blank">Все доступные услуги</a>
+                </div>
+                <ul class="services__list">
+                    <li class="service-card">
+                        <img class="service-card__image" src="images/1.jpg" alt="Карты Таро" width="100" height="100">
+                        <h3 class="service-card__title">Расклад на Таро</h3>
+                        <p class="service-card__schedule">Расписание: 12:00-18:00</p>
+                        <p class="service-card__days">Дни недели: вторник, четверг, суббота</p>
+                        <a class="service-card__link" href="#">Узнать подробнее</a>
+                        <span class="service-card__price">От 1500 Р</span>
+                    </li>
+                    <li class="service-card">
+                        <img class="service-card__image" src="images/2.jpg" alt="Натальная карта" width="100" height="100">
+                        <h3 class="service-card__title">Подробный разбор натальной карты</h3>
+                        <p class="service-card__schedule">Расписание: 12:00-18:00</p>
+                        <p class="service-card__note">По записи</p>
+                        <a class="service-card__link" href="#">Узнать подробнее</a>
+                        <span class="service-card__price">От 3000 Р</span>
+                    </li>
+                    <li class="service-card">
+                        <img class="service-card__image" src="images/3.jpg" alt="Свечи" width="100" height="100">
+                        <h3 class="service-card__title">Отлив заговорённых свечей</h3>
+                        <p class="service-card__schedule">Расписание: Индивидуальное обращение</p>
+                        <p class="service-card__days">Дни недели: суббота</p>
+                        <a class="service-card__link" href="#">Узнать подробнее</a>
+                        <span class="service-card__price">От 1000 Р</span>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">Сайт создан Вильчиком Михаилом Анатольевичем АБ-21</p>
+            <ul class="footer__nav">
+                <li class="footer__item"><a class="footer__link" href="#">Контактная информация</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Связь с нами</a></li>
+                <li class="footer__item"><a class="footer__link" href="#">Политика конфиденциальности</a></li>
+            </ul>
+        </footer>
+    </body>
 </html>
