@@ -261,6 +261,8 @@ h1, h2, h3, .nav__link {
     position: relative;
     transition: var(--transition);
     box-shadow: var(--card-shadow);
+    cursor: pointer;
+    outline: none;
 }
 
 .service-card::before {
@@ -280,13 +282,20 @@ h1, h2, h3, .nav__link {
     transition: var(--transition);
 }
 
-.service-card:hover {
+.service-card:hover,
+.service-card:focus {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(180, 77, 205, 0.3);
 }
 
-.service-card:hover::before {
-    opacity: 1;
+.service-card:active {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(180, 77, 205, 0.2);
+}
+
+.service-card:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 .service-card__image {
@@ -551,7 +560,6 @@ h1, h2, h3, .nav__link {
     }
 }
 
-/* Form elements disabled state */
 .button:disabled,
 .music-toggle:disabled {
     opacity: 0.6;
@@ -617,7 +625,6 @@ h1, h2, h3, .nav__link {
     animation: pulse 2s infinite;
 }
 
-/* Interactive elements focus states */
 .button:focus,
 .nav__link:focus,
 .service-card__link:focus,
@@ -627,7 +634,6 @@ h1, h2, h3, .nav__link {
     outline-offset: 2px;
 }
 
-/* Prevent layout shifts on hover */
 .button:hover,
 .nav__link:hover,
 .service-card__link:hover,
@@ -636,7 +642,6 @@ h1, h2, h3, .nav__link {
     transform: none;
 }
 
-/* Ensure minimum content area */
 .services {
     min-height: 400px;
 }
@@ -645,7 +650,6 @@ h1, h2, h3, .nav__link {
     min-height: 100px;
 }
 
-/* Ensure proper text alignment */
 .service-card__title {
     margin-bottom: 16px;
     min-height: 72px;
@@ -660,4 +664,220 @@ h1, h2, h3, .nav__link {
 .service-card__note {
     margin: 8px 0;
     min-height: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.modal__content {
+    background-color: var(--background-card);
+    border: 2px solid var(--accent-color);
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: var(--card-shadow);
+}
+
+.modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.modal__close:hover {
+    color: var(--accent-color);
+}
+
+.modal__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form__label {
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+.form__input {
+    padding: 12px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.form__input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.form__submit {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.modal__body {
+    color: var(--primary-color);
+}
+
+.service-details {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.service-details__image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.service-details__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #b44dcd;
+}
+
+.service-details__description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.service-details__schedule,
+.service-details__price {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #b44dcd;
+}
+
+.booking-form {
+    background: rgba(138, 43, 160, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.form__group {
+    margin-bottom: 20px;
+}
+
+.form__label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.form__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #b44dcd;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.form__input:focus {
+    outline: none;
+    border-color: #8a2ba0;
+    box-shadow: 0 0 5px rgba(180, 77, 205, 0.5);
+}
+
+.form__input[type="date"],
+.form__input[type="time"] {
+    color-scheme: dark;
+}
+
+textarea.form__input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+select.form__input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23b44dcd' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+.form__submit {
+    width: 100%;
+    padding: 12px;
+    background: #b44dcd;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form__submit:hover {
+    background: #8a2ba0;
+}
+
+@media (max-width: 768px) {
+    .service-details__title {
+        font-size: 20px;
+    }
+
+    .service-details__description {
+        font-size: 14px;
+    }
+
+    .form__label {
+        font-size: 14px;
+    }
+
+    .form__input {
+        font-size: 14px;
+    }
 }

@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="styles/normalize.css">
         <link rel="stylesheet" href="styles/style.css">
         <script src="js/main.js" defer></script>
+        <script src="js/script.js" defer></script>
     </head>
     <body>
         <audio id="background-music" loop>
@@ -18,14 +19,95 @@
                 <span class="music-icon">🎵</span>
             </button>
         </div>
+
+        <div class="modal" id="serviceModal">
+            <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть">&times;</button>
+                <h2 class="modal__title">Детали услуги</h2>
+                <div class="modal__body">
+                </div>
+                <form class="form booking-form" id="bookingForm">
+                    <div class="form__group">
+                        <label class="form__label" for="bookingName">Ваше имя</label>
+                        <input class="form__input" type="text" id="bookingName" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="bookingPhone">Телефон</label>
+                        <input class="form__input" type="tel" id="bookingPhone" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="bookingDate">Дата записи</label>
+                        <input class="form__input" type="date" id="bookingDate" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="bookingTime">Время</label>
+                        <select class="form__input" id="bookingTime" required>
+                            <option value="">Выберите время</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="bookingComments">Комментарий</label>
+                        <textarea class="form__input" id="bookingComments" rows="3"></textarea>
+                    </div>
+                    <button class="button form__submit" type="submit">Записаться</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal" id="loginModal">
+            <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть">&times;</button>
+                <h2 class="modal__title">Вход</h2>
+                <form class="form" id="loginForm">
+                    <div class="form__group">
+                        <label class="form__label" for="loginEmail">Email</label>
+                        <input class="form__input" type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="loginPassword">Пароль</label>
+                        <input class="form__input" type="password" id="loginPassword" required>
+                    </div>
+                    <button class="button form__submit" type="submit">Войти</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal" id="registerModal">
+            <div class="modal__content">
+                <button class="modal__close" aria-label="Закрыть">&times;</button>
+                <h2 class="modal__title">Регистрация</h2>
+                <form class="form" id="registerForm">
+                    <div class="form__group">
+                        <label class="form__label" for="registerName">Имя</label>
+                        <input class="form__input" type="text" id="registerName" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="registerEmail">Email</label>
+                        <input class="form__input" type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="registerPassword">Пароль</label>
+                        <input class="form__input" type="password" id="registerPassword" required>
+                    </div>
+                    <button class="button form__submit" type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+
         <header class="header">
             <div class="container">
                 <div class="header__top">
                     <img class="header__logo" src="images/logo.jpg" alt="Логотип эзотерического салона" width="120" height="120">
                     <h1 class="header__title">✧ Эзотерические услуги ✧</h1>
                     <div class="header__auth">
-                        <a class="button" href="login.html">Вход</a>
-                        <a class="button" href="registration.html">Регистрация</a>
+                        <button class="button" id="loginButton">Вход</button>
+                        <button class="button" id="registerButton">Регистрация</button>
                     </div>
                 </div>
                 <nav class="nav">
@@ -54,28 +136,25 @@
                         <h2 class="services__title">✧ Наши услуги ✧</h2>
                     </div>
                     <ul class="services__list">
-                        <li class="service-card">
+                        <li class="service-card" tabindex="0">
                             <img class="service-card__image" src="images/tarot.jpg" alt="Карты Таро" width="300" height="200">
                             <h3 class="service-card__title">Расклад на Таро</h3>
                             <p class="service-card__schedule">Расписание: 12:00-18:00</p>
                             <p class="service-card__days">Дни: вторник, четверг, суббота</p>
-                            <a class="service-card__link" href="#">Узнать подробнее</a>
                             <span class="service-card__price">От 1500 ₽</span>
                         </li>
-                        <li class="service-card">
+                        <li class="service-card" tabindex="0">
                             <img class="service-card__image" src="images/natal.jpg" alt="Натальная карта" width="300" height="200">
                             <h3 class="service-card__title">Подробный разбор натальной карты</h3>
                             <p class="service-card__schedule">Расписание: 12:00-18:00</p>
                             <p class="service-card__note">По записи</p>
-                            <a class="service-card__link" href="#">Узнать подробнее</a>
                             <span class="service-card__price">От 3000 ₽</span>
                         </li>
-                        <li class="service-card">
+                        <li class="service-card" tabindex="0">
                             <img class="service-card__image" src="images/candles.jpg" alt="Свечи" width="300" height="200">
                             <h3 class="service-card__title">Отлив заговорённых свечей</h3>
                             <p class="service-card__schedule">Расписание: Индивидуальное обращение</p>
                             <p class="service-card__days">Дни: суббота</p>
-                            <a class="service-card__link" href="#">Узнать подробнее</a>
                             <span class="service-card__price">От 1000 ₽</span>
                         </li>
                     </ul>
