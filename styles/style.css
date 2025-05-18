@@ -1,5 +1,162 @@
 @import "fonts.css";
 @import "base.css";
 @import "header.css";
-@import "footer.css";
 @import "main.css";
+@import "footer.css";
+
+:root {
+    --primary-color: #333;
+    --secondary-color: #666;
+    --accent-color: #007bff;
+    --background-light: #f8f9fa;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--primary-color);
+}
+
+.header {
+    padding: 1rem;
+    background-color: var(--background-light);
+}
+
+.header__logo {
+    width: 100px;
+    height: 100px;
+}
+
+.header__title {
+    margin: 1rem 0;
+}
+
+.header__auth {
+    margin: 1rem 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    background-color: var(--background-light);
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+.nav {
+    margin: 1rem 0;
+}
+
+.nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav__item {
+    margin: 0;
+}
+
+.nav__item--active .nav__link {
+    color: var(--accent-color);
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.main {
+    padding: 2rem 0;
+}
+
+.services__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.services__title {
+    margin: 0;
+}
+
+.services__link {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.services__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    padding: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+}
+
+.service-card__image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.service-card__title {
+    margin: 1rem 0;
+}
+
+.service-card__schedule,
+.service-card__days,
+.service-card__note {
+    margin: 0.5rem 0;
+    color: var(--secondary-color);
+}
+
+.service-card__link {
+    display: inline-block;
+    margin: 1rem 0;
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.service-card__price {
+    display: block;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.footer {
+    padding: 2rem 0;
+    background-color: var(--background-light);
+    margin-top: 2rem;
+}
+
+.footer__copyright {
+    margin: 0 0 1rem;
+}
+
+.footer__nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer__item {
+    margin: 0.5rem 0;
+}
+
+.footer__link {
+    text-decoration: none;
+    color: var(--primary-color);
+}

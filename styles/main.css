@@ -1,4 +1,80 @@
 .main{
     background-color:rgb(196, 152, 152);
     color: rgb(145, 255, 0);
+    padding: 40px 0;
+}
+
+.services__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.services__title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.services__link {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.services__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    list-style: none;
+}
+
+.service-card {
+    padding: 20px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+}
+
+.service-card__image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.service-card__title {
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.service-card__schedule,
+.service-card__days,
+.service-card__note {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--secondary-color);
+}
+
+.service-card__link {
+    display: inline-block;
+    margin: 15px 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.service-card__price {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--primary-color);
 }
