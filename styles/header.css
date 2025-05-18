@@ -1,0 +1,17 @@
+.header{
+    background-color:rgb(106, 101, 110);
+    color: rgb(142, 156, 156);
+}
+.menu__link{
+    background-color:rgb(34, 94, 121);
+    color: rgb(157, 255, 0);
+    text-decoration:none;
+}
+.treveling__subtitel{
+    background-color:rgb(121, 34, 41);
+    color: rgb(200, 255, 0);
+}
+.footer__name{
+    background-color:rgb(26, 33, 36);
+    color: rgb(0, 89, 255);
+}
