@@ -6,7 +6,8 @@
         <title>Эзотерические услуги</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="styles/normalize.css">
         <link rel="stylesheet" href="styles/style.css">
         <script src="js/main.js" defer></script>
@@ -14,25 +15,27 @@
     <body>
         <header class="header">
             <div class="container">
-                <img class="header__logo" src="images/logo.jpg" alt="Логотип" width="100" height="100">
-                <h1 class="header__title">Эзотерические услуги</h1>
-                <div class="header__auth">
-                    <a class="button" href="login.html">Вход</a>
-                    <a class="button" href="registration.html">Регистрация</a>
+                <div class="header__top">
+                    <img class="header__logo" src="images/logo.jpg" alt="Логотип эзотерического салона" width="120" height="120">
+                    <h1 class="header__title">✧ Эзотерические услуги ✧</h1>
+                    <div class="header__auth">
+                        <a class="button" href="login.html"><i class="fas fa-user"></i> Вход</a>
+                        <a class="button" href="registration.html"><i class="fas fa-user-plus"></i> Регистрация</a>
+                    </div>
                 </div>
                 <nav class="nav">
                     <ul class="nav__list">
                         <li class="nav__item nav__item--active">
-                            <a class="nav__link" href="index.html">Главная</a>
+                            <a class="nav__link" href="index.html"><i class="fas fa-home"></i> Главная</a>
                         </li>
                         <li class="nav__item">
-                            <a class="nav__link" href="catalog.html">Каталог</a> 
+                            <a class="nav__link" href="catalog.html"><i class="fas fa-book-open"></i> Каталог</a> 
                         </li>
                         <li class="nav__item"> 
-                            <a class="nav__link" href="about.html">О нас</a> 
+                            <a class="nav__link" href="about.html"><i class="fas fa-info-circle"></i> О нас</a> 
                         </li>
                         <li class="nav__item"> 
-                            <a class="nav__link" href="contacts.html">Контакты</a>
+                            <a class="nav__link" href="contacts.html"><i class="fas fa-envelope"></i> Контакты</a>
                         </li>
                     </ul>
                 </nav>
@@ -43,33 +46,33 @@
             <div class="container">
                 <section class="services">
                     <div class="services__header">
-                        <h2 class="services__title">Наши услуги</h2>
-                        <a class="services__link" href="#" target="_blank">Все доступные услуги</a>
+                        <h2 class="services__title">✧ Наши услуги ✧</h2>
+                        <a class="services__link" href="#"><i class="fas fa-crystal-ball"></i> Все доступные услуги</a>
                     </div>
                     <ul class="services__list">
                         <li class="service-card">
-                            <img class="service-card__image" src="images/tarot.jpg" alt="Карты Таро" width="100" height="100">
-                            <h3 class="service-card__title">Расклад на Таро</h3>
-                            <p class="service-card__schedule">Расписание: 12:00-18:00</p>
-                            <p class="service-card__days">Дни: вторник, четверг, суббота</p>
-                            <a class="service-card__link" href="#">Узнать подробнее</a>
-                            <span class="service-card__price">От 1500 ₽</span>
+                            <img class="service-card__image" src="images/tarot.jpg" alt="Карты Таро" width="300" height="200">
+                            <h3 class="service-card__title"><i class="fas fa-cards"></i> Расклад на Таро</h3>
+                            <p class="service-card__schedule"><i class="far fa-clock"></i> Расписание: 12:00-18:00</p>
+                            <p class="service-card__days"><i class="far fa-calendar"></i> Дни: вторник, четверг, суббота</p>
+                            <a class="service-card__link" href="#">Узнать подробнее <i class="fas fa-arrow-right"></i></a>
+                            <span class="service-card__price"><i class="fas fa-gem"></i> От 1500 ₽</span>
                         </li>
                         <li class="service-card">
-                            <img class="service-card__image" src="images/natal.jpg" alt="Натальная карта" width="100" height="100">
-                            <h3 class="service-card__title">Подробный разбор натальной карты</h3>
-                            <p class="service-card__schedule">Расписание: 12:00-18:00</p>
-                            <p class="service-card__note">По записи</p>
-                            <a class="service-card__link" href="#">Узнать подробнее</a>
-                            <span class="service-card__price">От 3000 ₽</span>
+                            <img class="service-card__image" src="images/natal.jpg" alt="Натальная карта" width="300" height="200">
+                            <h3 class="service-card__title"><i class="fas fa-star"></i> Подробный разбор натальной карты</h3>
+                            <p class="service-card__schedule"><i class="far fa-clock"></i> Расписание: 12:00-18:00</p>
+                            <p class="service-card__note"><i class="fas fa-info-circle"></i> По записи</p>
+                            <a class="service-card__link" href="#">Узнать подробнее <i class="fas fa-arrow-right"></i></a>
+                            <span class="service-card__price"><i class="fas fa-gem"></i> От 3000 ₽</span>
                         </li>
                         <li class="service-card">
-                            <img class="service-card__image" src="images/candles.jpg" alt="Свечи" width="100" height="100">
-                            <h3 class="service-card__title">Отлив заговорённых свечей</h3>
-                            <p class="service-card__schedule">Расписание: Индивидуальное обращение</p>
-                            <p class="service-card__days">Дни: суббота</p>
-                            <a class="service-card__link" href="#">Узнать подробнее</a>
-                            <span class="service-card__price">От 1000 ₽</span>
+                            <img class="service-card__image" src="images/candles.jpg" alt="Свечи" width="300" height="200">
+                            <h3 class="service-card__title"><i class="fas fa-fire"></i> Отлив заговорённых свечей</h3>
+                            <p class="service-card__schedule"><i class="far fa-clock"></i> Расписание: Индивидуальное обращение</p>
+                            <p class="service-card__days"><i class="far fa-calendar"></i> Дни: суббота</p>
+                            <a class="service-card__link" href="#">Узнать подробнее <i class="fas fa-arrow-right"></i></a>
+                            <span class="service-card__price"><i class="fas fa-gem"></i> От 1000 ₽</span>
                         </li>
                     </ul>
                 </section>
@@ -77,11 +80,11 @@
         </main>
         <footer class="footer">
             <div class="container">
-                <p class="footer__copyright">Сайт создан Вильчиком Михаилом Анатольевичем АБ-21</p>
+                <p class="footer__copyright">© 2024 Эзотерические услуги | Сайт создан Вильчиком Михаилом Анатольевичем АБ-21</p>
                 <ul class="footer__nav">
-                    <li class="footer__item"><a class="footer__link" href="#">Контактная информация</a></li>
-                    <li class="footer__item"><a class="footer__link" href="#">Связь с нами</a></li>
-                    <li class="footer__item"><a class="footer__link" href="#">Политика конфиденциальности</a></li>
+                    <li class="footer__item"><a class="footer__link" href="#"><i class="fas fa-phone"></i> Контактная информация</a></li>
+                    <li class="footer__item"><a class="footer__link" href="#"><i class="fas fa-envelope"></i> Связь с нами</a></li>
+                    <li class="footer__item"><a class="footer__link" href="#"><i class="fas fa-shield-alt"></i> Политика конфиденциальности</a></li>
                 </ul>
             </div>
         </footer>
