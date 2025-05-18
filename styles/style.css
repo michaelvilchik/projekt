@@ -361,6 +361,18 @@ h1, h2, h3, .nav__link {
     text-shadow: 0 0 10px var(--dark-accent);
 }
 
+.service-card__description {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+    flex-grow: 1;
+    background: rgba(138, 43, 160, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(180, 77, 205, 0.2);
+}
+
 .footer {
     position: relative;
     width: 100%;
@@ -505,6 +517,12 @@ h1, h2, h3, .nav__link {
 
     .music-icon {
         font-size: 20px;
+    }
+
+    .service-card__description {
+        font-size: 13px;
+        padding: 8px;
+        margin-bottom: 12px;
     }
 }
 
@@ -907,4 +925,97 @@ textarea.form__input {
 
 .modal__close:active {
     transform: rotate(90deg) scale(0.95);
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 80px; /* Отступ справа больше, чтобы не перекрывать кнопку музыки */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--dark-accent);
+    border: 2px solid var(--accent-color);
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(180, 77, 205, 0.3);
+}
+
+.scroll-top.visible {
+    display: flex;
+}
+
+.scroll-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(180, 77, 205, 0.5);
+}
+
+.scroll-top:active {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .scroll-top {
+        right: 70px;
+        bottom: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+.services__available {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(138, 43, 160, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(180, 77, 205, 0.2);
+}
+
+.services__available h4 {
+    margin: 0 0 10px 0;
+    color: var(--accent-color);
+    font-family: Georgia, serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+.services__available ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.services__available li {
+    background: rgba(138, 43, 160, 0.2);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .services__available {
+        margin-top: 15px;
+        padding: 10px;
+    }
+
+    .services__available h4 {
+        font-size: 16px;
+    }
+
+    .services__available li {
+        font-size: 13px;
+        padding: 4px 12px;
+    }
 }

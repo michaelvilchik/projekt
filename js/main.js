@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let isPlaying = false;
 
-    // Функция для обновления состояния кнопки
     const updateMusicButton = () => {
         if (isPlaying) {
             musicToggle.classList.add('playing');
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Обработчик клика по кнопке
     musicToggle.addEventListener('click', () => {
         if (isPlaying) {
             audio.pause();
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateMusicButton();
     });
 
-    // Автоматическое воспроизведение при загрузке страницы
     const startMusic = () => {
         audio.play()
             .then(() => {
@@ -41,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     };
 
-    // Запускаем музыку при первом взаимодействии с страницей
     const handleFirstInteraction = () => {
         startMusic();
         document.removeEventListener('click', handleFirstInteraction);
@@ -49,10 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', handleFirstInteraction);
 
-    // Обработка ошибок воспроизведения
     audio.addEventListener('error', () => {
         console.error('Ошибка воспроизведения аудио');
         isPlaying = false;
         updateMusicButton();
     });
+
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navItems = document.querySelectorAll('.nav__item');
+    
+    navItems.forEach(item => {
+        const link = item.querySelector('.nav__link');
+        const href = link.getAttribute('href');
+        
+        if (href === currentPage) {
+            item.classList.add('nav__item--active');
+        } else {
+            item.classList.remove('nav__item--active');
+        }
+    });
+
+    console.log('Текущая страница:', currentPage);
 });

@@ -205,4 +205,31 @@ document.addEventListener('DOMContentLoaded', () => {
             Object.values(modals).forEach(modal => closeModal(modal));
         }
     });
+
+    // Формируем массив заголовков услуг и выводим их в консоль только на странице каталога
+    if (window.location.pathname.includes('catalog.html')) {
+        const serviceTitles = Array.from(document.querySelectorAll('.service-card__title')).map(title => title.textContent);
+        console.log('Список доступных услуг:', serviceTitles);
+    }
+
+    // Кнопка скролла вверх
+    const scrollTopButton = document.querySelector('.scroll-top');
+
+    // Показываем/скрываем кнопку скролла при прокрутке
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollTopButton.classList.add('visible');
+        } else {
+            scrollTopButton.classList.remove('visible');
+        }
+    });
+
+    // Обработчик клика по кнопке скролла
+    scrollTopButton.addEventListener('click', () => {
+        console.log('Скролл вверх страницы');
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 }); 
