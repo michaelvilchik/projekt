@@ -9,8 +9,12 @@
         <link rel="stylesheet" href="styles/style.css">
         <script src="js/main.js" defer></script>
         <script src="js/script.js" defer></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     </head>
     <body>
+        <div class="preloader">
+            <img src="images/logo.jpg" alt="Логотип" class="preloader__logo">
+        </div>
         <audio id="background-music" loop>
             <source src="audios/Neizvestnyjj_-_Dark_Sun_Gwyndolin_Dark_Souls_Prepare_to_Die.mp3" type="audio/mpeg">
         </audio>
@@ -136,11 +140,63 @@
                         <h2 class="services__title">✧ Наши услуги ✧</h2>
                     </div>
                     <ul class="services__list">
-                        <!-- Карточки услуг будут загружены динамически -->
                     </ul>
                     <div class="services__footer">
                         <a class="services__link" href="catalog.html">Все доступные услуги</a>
                     </div>
+                </section>
+
+                <section class="partners">
+                    <h2 class="partners__title">✧ Наши партнёры ✧</h2>
+                    <div class="partners__container">
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper partners-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="partner-card">
+                                        <img src="images/partner-shop.jpg" alt="Магазин эзотерики">
+                                        <h3>Магазин «Магия Века»</h3>
+                                        <p>Товары для ритуалов, свечи, амулеты, книги и многое другое.</p>
+                                        <a href="#" target="_blank" class="partner-link">Перейти на сайт</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="partner-card">
+                                        <img src="images/partner-astro.jpg" alt="Школа астрологии">
+                                        <h3>AstroSchool</h3>
+                                        <p>Обучение астрологии с нуля, вебинары и индивидуальные консультации.</p>
+                                        <a href="#" target="_blank" class="partner-link">Узнать больше</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="partner-card">
+                                        <img src="images/partner-meditation.jpg" alt="Центр медитации">
+                                        <h3>Центр «Гармония»</h3>
+                                        <p>Групповые и индивидуальные медитации, ретриты, онлайн-занятия.</p>
+                                        <a href="#" target="_blank" class="partner-link">Подробнее</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="partner-card">
+                                        <img src="images/partner-author.jpg" alt="Автор курсов">
+                                        <h3>Мария Лунная</h3>
+                                        <p>Авторские курсы по Таро, рунам, магическим практикам и саморазвитию.</p>
+                                        <a href="#" target="_blank" class="partner-link">Курсы Марии</a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="partner-card">
+                                        <img src="images/partner-community.jpg" alt="Сообщество">
+                                        <h3>Esoteric Club</h3>
+                                        <p>Общение, обмен опытом, совместные практики и поддержка в развитии.</p>
+                                        <a href="#" class="partner-link">Вступить</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </section>
             </div>
         </main>
@@ -155,5 +211,6 @@
                 </ul>
             </div>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     </body>
 </html>

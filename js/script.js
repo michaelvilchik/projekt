@@ -375,4 +375,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderServices();
-}); 
+
+    if (document.querySelector('.partners-swiper')) {
+        new Swiper('.partners-swiper', {
+            slidesPerView: 2,
+            spaceBetween: 24,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                900: { slidesPerView: 3 },
+                600: { slidesPerView: 2 },
+                0: { slidesPerView: 1 }
+            }
+        });
+    }
+
+    localStorage.setItem('lastVisitedPage', window.location.pathname);
+});
