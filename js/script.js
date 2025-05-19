@@ -22,7 +22,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Конфигурация пагинации
     const ITEMS_PER_PAGE = 6;
     const ITEMS_ON_HOME = 3;
     let currentPage = 1;
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
     const isCatalogPage = window.location.pathname.includes('catalog.html');
 
-    // Загрузка данных услуг из JSON
     const loadServices = async () => {
         try {
             const response = await fetch('data.json');
@@ -46,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Создание HTML карточки услуги
     const createServiceCard = (service) => {
         const card = document.createElement('li');
         card.className = 'service-card';
@@ -66,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     };
 
-    // Создание индикатора загрузки
     const createLoadingIndicator = () => {
         const loading = document.createElement('div');
         loading.className = 'loading-indicator';
@@ -74,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return loading;
     };
 
-    // Создание сообщения об ошибке
     const createErrorMessage = () => {
         const error = document.createElement('div');
         error.className = 'error-message';
@@ -82,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return error;
     };
 
-    // Обновление пагинации
     const updatePagination = () => {
         if (!isCatalogPage) return;
 
@@ -92,10 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!pagesContainer) return;
 
-        // Очищаем контейнер страниц
         pagesContainer.innerHTML = '';
 
-        // Создаем кнопки для каждой страницы
         for (let i = 1; i <= totalPages; i++) {
             const pageBtn = document.createElement('button');
             pageBtn.className = `pagination__page${i === currentPage ? ' active' : ''}`;
@@ -107,28 +99,23 @@ document.addEventListener('DOMContentLoaded', () => {
             pagesContainer.appendChild(pageBtn);
         }
 
-        // Обновляем состояние кнопок prev/next
         if (prevBtn) prevBtn.disabled = currentPage === 1;
         if (nextBtn) nextBtn.disabled = currentPage === totalPages;
     };
 
-    // Рендеринг карточек услуг
     const renderServices = async () => {
         const servicesList = document.querySelector('.services__list');
         if (!servicesList) return;
 
-        // Показываем индикатор загрузки
         servicesList.innerHTML = '';
         servicesList.appendChild(createLoadingIndicator());
 
         try {
-            // Загружаем все услуги, если еще не загружены
             if (allServices.length === 0) {
                 allServices = await loadServices();
                 totalPages = Math.ceil(allServices.length / ITEMS_PER_PAGE);
             }
 
-            // Очищаем список перед добавлением карточек
             servicesList.innerHTML = '';
 
             if (allServices.length === 0) {
@@ -138,29 +125,24 @@ document.addEventListener('DOMContentLoaded', () => {
             let servicesToShow = [];
             
             if (isHomePage) {
-                // На главной показываем только первые 3 услуги
                 servicesToShow = allServices.slice(0, ITEMS_ON_HOME);
                 servicesList.classList.add('services__list--home');
             } else if (isCatalogPage) {
-                // В каталоге показываем 6 услуг с пагинацией
                 const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
                 const endIndex = startIndex + ITEMS_PER_PAGE;
                 servicesToShow = allServices.slice(startIndex, endIndex);
                 servicesList.classList.add('services__list--catalog');
             }
 
-            // Создаем карточки
             servicesToShow.forEach(service => {
                 const card = createServiceCard(service);
                 servicesList.appendChild(card);
             });
 
-            // Обновляем пагинацию только для страницы каталога
             if (isCatalogPage) {
                 updatePagination();
             }
             
-            // Переинициализация обработчиков событий для карточек
             initServiceCards();
             
             console.log('Услуги успешно загружены:', servicesToShow.length);
@@ -171,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Инициализация обработчиков событий для карточек
     const initServiceCards = () => {
         const serviceCards = document.querySelectorAll('.service-card');
         serviceCards.forEach(card => {
@@ -227,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Клик по карточке услуги:', serviceCard.querySelector('.service-card__title').textContent);
         
         const title = serviceCard.querySelector('.service-card__title').textContent;
-        // Найдем услугу в массиве всех услуг
         const service = allServices.find(s => s.title === title);
         
         const serviceData = {
@@ -360,7 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Обработчики событий для кнопок пагинации только на странице каталога
     if (isCatalogPage) {
         document.getElementById('prevPage')?.addEventListener('click', () => {
             if (currentPage > 1) {
@@ -377,7 +356,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Обработка формы обратной связи
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -391,14 +369,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             console.log('Отправка формы обратной связи:', formData);
             
-            // Здесь будет отправка данных на сервер
-            
-            // Очищаем форму и показываем сообщение об успехе
             contactForm.reset();
             alert('Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.');
         });
     }
 
-    // Вызываем рендеринг при загрузке страницы
     renderServices();
 }); 

@@ -12,6 +12,8 @@
     --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     --transition: all 0.3s ease;
     --container-width: 1440px;
+    --spacing-base: 20px;
+    --border-radius: 15px;
 }
 
 html {
@@ -54,6 +56,7 @@ h1, h2, h3, .nav__link {
     background-color: rgba(26, 26, 26, 0.95);
     border-bottom: 2px solid var(--accent-color);
     margin-bottom: 30px;
+    z-index: 1000;
 }
 
 .header__logo {
@@ -71,22 +74,24 @@ h1, h2, h3, .nav__link {
 
 .header__top {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    padding: 0 20px;
 }
 
 .header__title {
     font-size: 32px;
     font-weight: 700;
     line-height: 1.2;
-    margin: 20px 0;
+    margin: 0;
     text-align: center;
     letter-spacing: 2px;
     text-shadow: var(--text-shadow);
     overflow-wrap: break-word;
     word-wrap: break-word;
-    max-width: 100%;
+    max-width: 50%;
     min-height: 40px;
 }
 
@@ -181,16 +186,13 @@ h1, h2, h3, .nav__link {
     min-height: 600px;
     margin: 0 auto;
     z-index: 2;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    gap: 40px;
 }
 
 .services__header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0;
+    margin-bottom: 40px;
     padding: 20px 30px;
     border-bottom: 1px solid var(--accent-color);
     width: 100%;
@@ -238,32 +240,117 @@ h1, h2, h3, .nav__link {
 
 .services__list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    align-items: stretch;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+    max-width: 1400px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .service-card {
+    background: var(--card-gradient);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    min-height: 450px;
     height: 100%;
-    background-color: rgba(26, 26, 26, 0.95);
-    backdrop-filter: blur(5px);
+    min-height: 450px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--accent-color);
+}
+
+.service-card.telegram-card {
+    max-width: none;
+    width: 100%;
+    overflow: hidden;
+    padding: 30px;
+    display: block;
+    background: var(--background-card);
     border: 2px solid var(--accent-color);
     border-radius: 15px;
-    padding: 24px;
-    position: relative;
-    transition: var(--transition);
     box-shadow: var(--card-shadow);
-    cursor: pointer;
-    outline: none;
+}
+
+.service-card.telegram-card .service-card__title {
+    font-size: 32px;
+    margin: 0 0 25px 0;
+    text-shadow: 0 0 10px var(--accent-color);
+    overflow: hidden;
+    clear: none;
+}
+
+.service-card.telegram-card .service-card__description {
+    font-size: 20px;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    overflow: visible;
+    text-align: justify;
+    background: rgba(138, 43, 160, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(180, 77, 205, 0.2);
+}
+
+.service-card.telegram-card .services__available {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(138, 43, 160, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(180, 77, 205, 0.2);
+}
+
+.service-card.telegram-card .services__available h4 {
+    margin: 0 0 10px 0;
+    color: var(--accent-color);
+    font-family: Georgia, serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+.service-card.telegram-card .services__available ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.service-card.telegram-card .services__available li {
+    list-style: none;
+    background: rgba(138, 43, 160, 0.2);
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: 2px solid var(--accent-color);
+    border-radius: 25px;
+    transition: var(--transition);
+    margin-top: 20px;
+    background: var(--dark-accent);
+}
+
+.contact-link:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(180, 77, 205, 0.5);
 }
 
 .service-card::before {
@@ -302,7 +389,7 @@ h1, h2, h3, .nav__link {
 .service-card__image-container {
     width: 100%;
     height: 250px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -323,17 +410,14 @@ h1, h2, h3, .nav__link {
 }
 
 .service-card__title {
-    font-size: 32px;
-    margin: 0 0 25px 0;
+    font-size: 24px;
+    margin: 0 0 20px 0;
     color: var(--accent-color);
     text-shadow: 0 0 10px var(--accent-color);
     line-height: 1.2;
     min-height: 60px;
     font-family: Georgia, serif;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .service-card__schedule,
@@ -366,10 +450,10 @@ h1, h2, h3, .nav__link {
 }
 
 .service-card__description {
-    font-size: 20px;
-    line-height: 1.8;
+    font-size: 18px;
+    line-height: 1.6;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    margin: 0 0 20px 0;
+    margin: 0 0 25px 0;
     flex-grow: 1;
     background: rgba(138, 43, 160, 0.1);
     padding: 20px;
@@ -463,27 +547,31 @@ h1, h2, h3, .nav__link {
     }
 
     .services__list {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px;
     }
 
     .service-card {
+        min-height: 400px;
         padding: 20px;
     }
 
     .service-card__image-container {
         height: 200px;
-    }
-
-    .service-card__title {
-        font-size: 26px;
         margin-bottom: 20px;
     }
 
+    .service-card__title {
+        font-size: 22px;
+        min-height: 50px;
+        margin-bottom: 15px;
+    }
+
     .service-card__description {
-        font-size: 18px;
-        line-height: 1.6;
+        font-size: 16px;
         padding: 15px;
+        margin-bottom: 20px;
     }
 
     .service-card__schedule,
@@ -1136,69 +1224,57 @@ textarea.form__input {
     box-shadow: 0 2px 4px rgba(180, 77, 205, 0.2);
 }
 
-/* Сетка услуг для главной страницы */
-.services__list--home {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-/* Сетка услуг для каталога */
+/* Сетка каталога */
 .services__list--catalog {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 80px 30px;
-    margin: 30px 0 0 0;
-    padding: 0;
-    list-style: none;
+    gap: 20px;
+    padding: 20px 0;
 }
 
+.service-card {
+    background: var(--card-gradient);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid var(--accent-color);
+}
+
+/* Адаптивность */
 @media (max-width: 1200px) {
-    .services__list--home,
-    .services__list--catalog {
+    .services__list {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .services__list--catalog {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 70px 30px;
-    }
-
-    .pagination {
-        margin-top: 40px;
-        padding-top: 25px;
+        gap: 30px;
+        padding: 30px;
     }
 }
 
 @media (max-width: 768px) {
-    .services__list--home {
+    .services__list {
         grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px;
     }
     
-    .services__list--catalog {
-        grid-template-columns: 1fr;
-        gap: 50px;
-        margin-top: 25px;
+    .service-card {
+        min-height: 400px;
+        padding: 20px;
     }
-
-    .pagination {
-        margin-top: 35px;
-        padding-top: 20px;
+    
+    .service-card__image-container {
+        height: 200px;
+        margin-bottom: 20px;
     }
-}
-
-@media (max-width: 576px) {
-    .services__list--catalog {
-        grid-template-columns: 1fr;
-        gap: 50px; /* Отступ между карточками 50px для мобильных */
+    
+    .service-card__title {
+        font-size: 22px;
+        min-height: 50px;
+        margin-bottom: 15px;
     }
-
-    .pagination {
-        margin-top: 30px;
-        padding-top: 20px;
+    
+    .service-card__description {
+        font-size: 16px;
+        padding: 15px;
+        margin-bottom: 20px;
     }
 }
 
@@ -1206,9 +1282,17 @@ textarea.form__input {
 .about__content {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     padding: 20px 0;
     margin-top: 30px;
+}
+
+.about__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .about__card {
@@ -1217,6 +1301,15 @@ textarea.form__input {
     overflow: hidden;
     padding: 30px;
     display: block;
+    background: var(--background-card);
+    border: 2px solid var(--accent-color);
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 0;
+}
+
+.about__card:last-child {
+    margin-bottom: 0;
 }
 
 .about__card .service-card__image-container {
@@ -1271,6 +1364,10 @@ textarea.form__input {
 }
 
 @media (max-width: 768px) {
+    .about__cards {
+        grid-template-columns: 1fr;
+    }
+
     .about__card {
         padding: 20px;
     }
@@ -1295,7 +1392,7 @@ textarea.form__input {
 .services__list--about {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 20px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1316,6 +1413,11 @@ textarea.form__input {
     max-width: none;
     width: 100%;
     background: linear-gradient(145deg, var(--background-card), var(--dark-accent));
+    margin-bottom: 0;
+}
+
+.about__values:last-child {
+    margin-bottom: 0;
 }
 
 .about__values .service-card__title {
@@ -1371,6 +1473,11 @@ textarea.form__input {
     max-width: none;
     width: 100%;
     background: linear-gradient(145deg, var(--background-card), var(--dark-accent));
+    margin-bottom: 0;
+}
+
+.about__places:last-child {
+    margin-bottom: 0;
 }
 
 .about__places .service-card__title {
@@ -1454,10 +1561,15 @@ textarea.form__input {
 @media (max-width: 1200px) {
     .services__list--about {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 
     .about__places .services__available {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about__cards {
+        grid-template-columns: 1fr;
     }
 
     .about__card .service-card__title,
@@ -1469,11 +1581,18 @@ textarea.form__input {
     .about__places .services__available h4 {
         font-size: 24px;
     }
+
+    .about__card,
+    .about__values,
+    .about__places {
+        margin-bottom: 0;
+    }
 }
 
 @media (max-width: 768px) {
     .services__list--about {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .about__values .services__available {
@@ -1484,8 +1603,12 @@ textarea.form__input {
         grid-template-columns: 1fr;
     }
 
+    .about__cards {
+        grid-template-columns: 1fr;
+    }
+
     .about__content {
-        gap: 30px;
+        gap: 20px;
         margin-top: 25px;
     }
 
@@ -1505,31 +1628,24 @@ textarea.form__input {
     .about__places .services__available h4 {
         font-size: 22px;
     }
-}
 
-.contacts__content {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding: 20px 0;
-    margin-top: 30px;
+    .about__card,
+    .about__values,
+    .about__places {
+        margin-bottom: 0;
+    }
 }
 
 .contacts__cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.contacts__card {
-    background: var(--background-card);
-    border: 2px solid var(--accent-color);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: var(--card-shadow);
-}
-
-.contacts__card-title {
+.contacts__card-title,
+.service-card.telegram-card .service-card__title {
     font-size: 32px;
     color: var(--accent-color);
     margin: 0 0 25px 0;
@@ -1538,7 +1654,8 @@ textarea.form__input {
     font-family: Georgia, serif;
 }
 
-.contacts__text {
+.contacts__text,
+.service-card.telegram-card .service-card__description {
     font-size: 20px;
     line-height: 1.8;
     color: var(--primary-color);
@@ -1548,17 +1665,16 @@ textarea.form__input {
     padding: 20px;
     border-radius: 12px;
     border: 1px solid rgba(180, 77, 205, 0.2);
+    flex-grow: 1;
 }
 
-.contacts__info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 20px;
+.contacts__info-list,
+.service-card.telegram-card .services__available {
+    margin-top: auto;
 }
 
-.contacts__info-item {
+.contacts__info-item,
+.service-card.telegram-card .services__available li {
     background: rgba(138, 43, 160, 0.1);
     padding: 20px;
     padding-left: 45px;
@@ -1567,9 +1683,16 @@ textarea.form__input {
     position: relative;
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
 }
 
-.contacts__info-item::before {
+.contacts__info-item:last-child,
+.service-card.telegram-card .services__available li:last-child {
+    margin-bottom: 0;
+}
+
+.contacts__info-item::before,
+.service-card.telegram-card .services__available li::before {
     content: "❈";
     position: absolute;
     left: 15px;
@@ -1582,11 +1705,32 @@ textarea.form__input {
     height: 100%;
 }
 
-.contacts__info-text {
+.contacts__info-text,
+.service-card.telegram-card .services__available li {
     font-size: 20px;
     line-height: 1.8;
     color: var(--primary-color);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: 2px solid var(--accent-color);
+    border-radius: 25px;
+    transition: var(--transition);
+    margin-top: 20px;
+    background: var(--dark-accent);
+}
+
+.contact-link:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(180, 77, 205, 0.5);
 }
 
 .contacts__map {
@@ -1685,52 +1829,174 @@ textarea.form__input {
 @media (max-width: 1200px) {
     .contacts__cards {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 
 @media (max-width: 768px) {
+    .about__content,
     .contacts__content {
-        gap: 30px;
+        gap: 20px;
         margin-top: 25px;
     }
 
-    .contacts__card {
-        padding: 20px;
+    .contacts__cards {
+        max-width: 400px;
     }
 
-    .contacts__card-title {
+    .contacts__card,
+    .service-card.telegram-card {
+        padding: 20px;
+        min-height: 400px;
+    }
+
+    .contacts__card-title,
+    .service-card.telegram-card .service-card__title {
         font-size: 26px;
         margin-bottom: 20px;
     }
 
-    .contacts__text {
+    .contacts__text,
+    .service-card.telegram-card .service-card__description,
+    .contacts__info-text,
+    .service-card.telegram-card .services__available li {
         font-size: 18px;
         line-height: 1.6;
         padding: 15px;
     }
 
-    .contacts__form {
-        padding: 20px;
+    .contacts__info-item,
+    .service-card.telegram-card .services__available li {
+        padding: 15px;
+        padding-left: 40px;
+        margin-bottom: 10px;
     }
+}
 
-    .contacts__form-label {
-        font-size: 18px;
-        padding-left: 30px;
+.about__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+.service-card.telegram-card,
+.service-card.about__values,
+.service-card.about__places {
+    height: auto;
+    min-height: auto;
+    display: block;
+}
+
+.service-card.about__values .services__available,
+.service-card.about__places .services__available {
+    flex-grow: 0;
+    display: block;
+}
+
+.service-card.about__values .services__available ul,
+.service-card.about__places .services__available {
+    margin-top: 0;
+}
+
+@media (max-width: 1200px) {
+    .about__content {
+        gap: 20px;
     }
+}
 
-    .contacts__form-label::before {
-        font-size: 18px;
-        left: 8px;
+@media (max-width: 768px) {
+    .about__content {
+        gap: 20px;
     }
-
-    .contacts__form-input {
-        padding: 12px;
-        font-size: 16px;
+    
+    .service-card.telegram-card,
+    .service-card.about__values,
+    .service-card.about__places {
+        min-height: 400px;
     }
+}
 
-    .contacts__form-button {
-        padding: 12px;
-        font-size: 18px;
-        margin-top: 25px;
+/* Сетка */
+.grid {
+    display: grid;
+    gap: var(--spacing-base);
+}
+
+.grid--catalog {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--about {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--contacts {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Карточки */
+.card {
+    background: var(--card-gradient);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-base);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--accent-color);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(180, 77, 205, 0.3);
+}
+
+.card__title {
+    font-size: 24px;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-base);
+    text-align: center;
+    text-shadow: var(--text-shadow);
+}
+
+.card__description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-base);
+    background: rgba(138, 43, 160, 0.1);
+    padding: var(--spacing-base);
+    border-radius: calc(var(--border-radius) / 2);
+    border: 1px solid rgba(180, 77, 205, 0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .grid--catalog,
+    .grid--about {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .grid--contacts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid--catalog,
+    .grid--about {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: calc(var(--spacing-base) * 0.75);
+    }
+    
+    .card__title {
+        font-size: 20px;
+    }
+    
+    .card__description {
+        font-size: 14px;
+        padding: calc(var(--spacing-base) * 0.75);
     }
 }
