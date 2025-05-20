@@ -44,7 +44,7 @@
 ### Структура JavaScript
 
 ```
-js/
+scripts/
 ├── main.js (управление музыкой)
 └── script.js (основная логика)
     ├── Модальные окна
@@ -94,7 +94,7 @@ project/
 ├── styles/
 │   ├── normalize.css
 │   └── style.css
-├── js/
+├── scripts/
 │   └── main.js
 ├── images/
 │   ├── logo.jpg
